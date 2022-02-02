@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinQuisine", "LinQuisine\LinQuisine.csproj", "{15D1327C-ADB5-4672-BF27-DA211E1CBBF7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15D1327C-ADB5-4672-BF27-DA211E1CBBF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15D1327C-ADB5-4672-BF27-DA211E1CBBF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15D1327C-ADB5-4672-BF27-DA211E1CBBF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15D1327C-ADB5-4672-BF27-DA211E1CBBF7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F927D539-B988-480C-B7FA-0D8BCC74EEB0}
+	EndGlobalSection
+EndGlobal

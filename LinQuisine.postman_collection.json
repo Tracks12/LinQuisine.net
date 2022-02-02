@@ -1,0 +1,460 @@
+{
+	"info": {
+		"_postman_id": "7ace285c-f0f6-419c-8f98-13b348e4de74",
+		"name": "LinQuisine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"user\": \"{{USER_NAME}}\",\r\n\t\"pass\": \"{{USER_PASS}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/auth/logout",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"user\": \"{{USER_NAME}}\",\r\n\t\"mail\": \"{{USER_NAME}}@{{DOMAIN_NAME}}\",\r\n\t\"pass\": \"{{USER_PASS}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Expect JSON format on response\", () => {",
+							"\tvar res = pm.response.json();",
+							"\tpm.expect(res).to.be.a('object');",
+							"});"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Recipes",
+			"item": [
+				{
+					"name": "Recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/recipes",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Recipe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"{{RECIPE_NAME}}\",\r\n\t\"nbParts\": 7,\r\n\t\"ingredients\": [],\r\n\t\"steps\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/recipes",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recipe by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/recipes/id/{{RECIPE_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"recipes",
+								"id",
+								"{{RECIPE_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Recipe by Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"Tarte à la courgette\",\r\n\t\"ingredients\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/recipes/id/{{RECIPE_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"recipes",
+								"id",
+								"{{RECIPE_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Recipe by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/recipes/id/{{RECIPE_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"recipes",
+								"id",
+								"{{RECIPE_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recipe by Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/recipes/name/{{RECIPE_NAME}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"recipes",
+								"name",
+								"{{RECIPE_NAME}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Recipe by Name",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"Tarte à la courgette\",\r\n\t\"ingredients\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/recipes/name/{{RECIPE_NAME}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"recipes",
+								"name",
+								"{{RECIPE_NAME}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Recipe by Name",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/recipes/name/{{RECIPE_NAME}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"recipes",
+								"name",
+								"{{RECIPE_NAME}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "apikey",
+				"apikey": [
+					{
+						"key": "value",
+						"value": "{{USER_TOKEN}}",
+						"type": "string"
+					},
+					{
+						"key": "key",
+						"value": "authorization",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Expect JSON format on response\", () => {\r",
+							"\tvar res = pm.response.json();\r",
+							"\tpm.expect(res).to.be.a('object');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"API is online\", () => {\r",
+							"\tvar res = pm.response.json();\r",
+							"\tpm.expect(res.online).to.eql(true);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/status",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Version",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Expect JSON format on response\", () => {\r",
+							"\tvar res = pm.response.json();\r",
+							"\tpm.expect(res).to.be.a('object');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Have a string of API version\", () => {\r",
+							"\tvar res = pm.response.json();\r",
+							"\tpm.expect(res.version).to.be.a(\"string\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/version",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"version"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Response time is less than 200ms\", () => pm.expect(pm.response.responseTime).to.be.below(200));",
+					"pm.test(\"Status code is 200\", () => pm.response.to.have.status(200));",
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "DOMAIN_NAME",
+			"value": "localhost",
+			"type": "string"
+		},
+		{
+			"key": "BASE_URL",
+			"value": "http://{{DOMAIN_NAME}}:5000/api",
+			"type": "string"
+		},
+		{
+			"key": "USER_ID",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "USER_NAME",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "USER_PASS",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "USER_TOKEN",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "RECIPE_ID",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "RECIPE_NAME",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
