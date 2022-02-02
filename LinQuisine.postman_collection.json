@@ -110,6 +110,20 @@
 			"item": [
 				{
 					"name": "Recipes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect Array of JSON on response\", () => {\r",
+									"\tvar res = pm.response.json();\r",
+									"\tpm.expect(res).to.be.a('array');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -127,6 +141,20 @@
 				},
 				{
 					"name": "Add Recipe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect JSON format on response\", () => {\r",
+									"\tvar res = pm.response.json();\r",
+									"\tpm.expect(res).to.be.a('object');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -153,6 +181,20 @@
 				},
 				{
 					"name": "Recipe by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect JSON format on response\", () => {\r",
+									"\tvar res = pm.response.json();\r",
+									"\tpm.expect(res).to.be.a('object');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -172,6 +214,20 @@
 				},
 				{
 					"name": "Update Recipe by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect JSON format on response\", () => {\r",
+									"\tvar res = pm.response.json();\r",
+									"\tpm.expect(res).to.be.a('object');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -200,6 +256,20 @@
 				},
 				{
 					"name": "Delete Recipe by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect JSON format on response\", () => {\r",
+									"\tvar res = pm.response.json();\r",
+									"\tpm.expect(res).to.be.a('object');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -219,6 +289,20 @@
 				},
 				{
 					"name": "Recipe by Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect JSON format on response\", () => {\r",
+									"\tvar res = pm.response.json();\r",
+									"\tpm.expect(res).to.be.a('object');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -238,6 +322,20 @@
 				},
 				{
 					"name": "Update Recipe by Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect JSON format on response\", () => {\r",
+									"\tvar res = pm.response.json();\r",
+									"\tpm.expect(res).to.be.a('object');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -266,6 +364,20 @@
 				},
 				{
 					"name": "Delete Recipe by Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect JSON format on response\", () => {\r",
+									"\tvar res = pm.response.json();\r",
+									"\tpm.expect(res).to.be.a('object');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -327,11 +439,6 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Expect JSON format on response\", () => {\r",
-							"\tvar res = pm.response.json();\r",
-							"\tpm.expect(res).to.be.a('object');\r",
-							"});\r",
-							"\r",
 							"pm.test(\"API is online\", () => {\r",
 							"\tvar res = pm.response.json();\r",
 							"\tpm.expect(res.online).to.eql(true);\r",
@@ -363,11 +470,6 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Expect JSON format on response\", () => {\r",
-							"\tvar res = pm.response.json();\r",
-							"\tpm.expect(res).to.be.a('object');\r",
-							"});\r",
-							"\r",
 							"pm.test(\"Have a string of API version\", () => {\r",
 							"\tvar res = pm.response.json();\r",
 							"\tpm.expect(res.version).to.be.a(\"string\");\r",
