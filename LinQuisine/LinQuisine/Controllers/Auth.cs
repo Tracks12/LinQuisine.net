@@ -13,6 +13,7 @@ namespace LinQuisine.Controllers
     public class Auth : ControllerBase
     {
         [HttpPost]
+        [Consumes("application/json")]
         [Route("register")]
         public Profile Register()
         {
@@ -25,6 +26,7 @@ namespace LinQuisine.Controllers
         }
 
         [HttpPost]
+        [Consumes("application/json")]
         [Route("login")]
         public Profile Login()
         {
@@ -37,6 +39,7 @@ namespace LinQuisine.Controllers
         }
 
         [HttpPost]
+        [Consumes("application/json")]
         [Route("logout")]
         public Logout Logout()
         {
