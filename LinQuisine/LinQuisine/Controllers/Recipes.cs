@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static LinQuisine.Models.Reponse;
 
 namespace LinQuisine.Controllers
 {
@@ -31,6 +32,8 @@ namespace LinQuisine.Controllers
                 info = "item added"
             };
         }
+
+        #region Id CRUD
 
         [HttpGet]
         [Consumes("application/json")]
@@ -64,6 +67,10 @@ namespace LinQuisine.Controllers
             };
         }
 
+        #endregion
+
+        #region Name CRUD
+
         [HttpGet]
         [Consumes("application/json")]
         [Route("name")]
@@ -95,5 +102,7 @@ namespace LinQuisine.Controllers
                 info = "x item(s) are deleted"
             };
         }
+
+        #endregion
     }
 }
