@@ -15,17 +15,11 @@ namespace LinQuisine.Controllers
         [HttpGet]
         [Consumes("application/json")]
         [Route("status")]
-        public Status Status()
-        {
-            return new Status { online = true };
-        }
+        public IActionResult Status() => Ok(new Status { online = true });
 
         [HttpGet]
         [Consumes("application/json")]
         [Route("version")]
-        public Models.Version Version()
-        {
-            return new Models.Version { version = "0.1.0" };
-        }
+        public IActionResult Version() => Ok(new Models.Version { version = "0.1.0" });
     }
 }
