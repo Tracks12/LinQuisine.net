@@ -23,3 +23,5 @@ D:\src\LinQuisine.net\LinQuisine\LinQuisine\obj\Debug\net5.0\LinQuisine.pdb
 D:\src\LinQuisine.net\LinQuisine\LinQuisine\obj\Debug\net5.0\LinQuisine.genruntimeconfig.cache
 D:\src\LinQuisine.net\LinQuisine\LinQuisine\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
 D:\src\LinQuisine.net\LinQuisine\LinQuisine\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+D:\src\LinQuisine.net\LinQuisine\LinQuisine\bin\Debug\net5.0\Database\recipes.json
+D:\src\LinQuisine.net\LinQuisine\LinQuisine\bin\Debug\net5.0\Database\users.json

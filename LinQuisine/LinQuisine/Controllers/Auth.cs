@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using static LinQuisine.Models.Reponse;
@@ -16,12 +17,10 @@ namespace LinQuisine.Controllers
     [Route("api/[controller]")]
     public class Auth : ControllerBase
     {
-        private IConfiguration _config;
-
         private readonly List<User> users = new() {
-            //new User(id: 0, username: "admin", mail: "admin@localhost", password: "admin", token: ""),
-            //new User(id: 1, username: "user", mail: "user@localhost", password: "pass", token: ""),
-            //new User(id: 2, username: "guest", mail: "guest@localhost", password: "guest", token: "")
+            new User(id: 0, username: "admin", mail: "admin@localhost", password: "admin", token: ""),
+            new User(id: 1, username: "user", mail: "user@localhost", password: "pass", token: ""),
+            new User(id: 2, username: "guest", mail: "guest@localhost", password: "guest", token: "")
         };
 
         #region Register
@@ -29,7 +28,7 @@ namespace LinQuisine.Controllers
         [HttpPost]
         [Consumes("application/json")]
         [Route("register")]
-        public async Task<IActionResult> Register(Register body)
+        public async Task<IActionResult> Register([FromBody] Register body)
         {
             try
             {
@@ -57,7 +56,7 @@ namespace LinQuisine.Controllers
         [HttpPost]
         [Consumes("application/json")]
         [Route("login")]
-        public async Task<IActionResult> Login(Login body)
+        public async Task<IActionResult> Login([FromBody] Login body)
         {
             try
             {
@@ -69,7 +68,7 @@ namespace LinQuisine.Controllers
                     }
                 }
 
-                return NotFound(new StatusReponse { success = false, info = "user not found" });
+                return NotFound(new StatusReponse { success = false, error = "user not found" });
             }
             
             catch(InvalidCastException)
@@ -82,14 +81,25 @@ namespace LinQuisine.Controllers
 
         #region Logout
 
-        [HttpPost]
+        [HttpPost("GetAllHeaders")]
         [Consumes("application/json")]
         [Route("logout")]
         public async Task<IActionResult> Logout()
         {
             try
             {
-                return Ok(new StatusReponse { success = true, info = "user successfully disconnected" });
+                var headers = Request.Headers;
+
+                if (headers.ContainsKey("authorization"))
+                {
+                    Console.WriteLine(headers["authorization"]);
+                    return Ok(new StatusReponse { success = true, info = "user successfully disconnected" });
+                }
+
+                else
+                {
+                    return BadRequest();
+                }
             }
 
             catch(InvalidCastException)
