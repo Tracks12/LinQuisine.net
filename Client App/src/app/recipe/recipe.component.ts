@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-recipe',
@@ -16,11 +17,16 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class RecipeComponent implements OnInit {
   ing: string[] = ['Patates', 'Poireaux', 'Tomates', 'Abricot', 'Ver de terre'];
+  status: any;
   @Input()
   num!: number;
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.apiService.getStatus().subscribe((data) =>{
+      console.log(data);
+      this.status = data['online'];
+    })
   }
 
   state = 'collapsed';
