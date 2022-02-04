@@ -24,6 +24,15 @@ namespace LinQuisine
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => {
+                options.AddPolicy(name: "AllowAll",
+                    builder => {
+                        builder
+                            .WithOrigins("*")
+                            .WithMethods("GET", "POST", "PUT", "DELETE");
+                    });
+            });
+
             services.AddControllers();
         }
 
@@ -36,7 +45,7 @@ namespace LinQuisine
             }
 
             app.UseRouting();
-
+            app.UseCors();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

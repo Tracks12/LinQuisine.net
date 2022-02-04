@@ -1,12 +1,13 @@
 ﻿using LinQuisine.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using static LinQuisine.Models.Reponse;
@@ -14,6 +15,8 @@ using static LinQuisine.Models.Reponse;
 namespace LinQuisine.Controllers
 {
     [ApiController]
+    [EnableCors("AllowAll")]
+    [Consumes("application/json")]
     [Route("api/[controller]")]
     public class Auth : ControllerBase
     {
@@ -23,10 +26,15 @@ namespace LinQuisine.Controllers
             new User(id: 2, username: "guest", mail: "guest@localhost", password: "guest", token: "")
         };
 
+        private async Task<List<User>> GetUsers()
+        {
+            string _json = await System.IO.File.ReadAllTextAsync("users.json");
+            return JsonConvert.DeserializeObject<List<User>>(_json);
+        }
+
         #region Register
 
         [HttpPost]
-        [Consumes("application/json")]
         [Route("register")]
         public async Task<IActionResult> Register([FromBody] Register body)
         {
@@ -54,7 +62,6 @@ namespace LinQuisine.Controllers
         #region Login
 
         [HttpPost]
-        [Consumes("application/json")]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] Login body)
         {
@@ -82,7 +89,6 @@ namespace LinQuisine.Controllers
         #region Logout
 
         [HttpPost("GetAllHeaders")]
-        [Consumes("application/json")]
         [Route("logout")]
         public async Task<IActionResult> Logout()
         {

@@ -1,4 +1,5 @@
 ﻿using LinQuisine.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,12 @@ using static LinQuisine.Models.Reponse;
 namespace LinQuisine.Controllers
 {
     [ApiController]
+    [EnableCors("AllowAll")]
+    [Consumes("application/json")]
     [Route("api/[controller]")]
     public class Recipes : ControllerBase
     {
         [HttpGet]
-        [Consumes("application/json")]
         public List<Recipe> Get()
         {
             return new List<Recipe> {
@@ -23,7 +25,6 @@ namespace LinQuisine.Controllers
         }
 
         [HttpPost]
-        [Consumes("application/json")]
         public StatusReponse Post()
         {
             return new StatusReponse
@@ -36,7 +37,6 @@ namespace LinQuisine.Controllers
         #region Id CRUD
 
         [HttpGet]
-        [Consumes("application/json")]
         [Route("id")]
         public Recipe GetById()
         {
@@ -44,7 +44,6 @@ namespace LinQuisine.Controllers
         }
 
         [HttpPut]
-        [Consumes("application/json")]
         [Route("id")]
         public StatusReponse PutById()
         {
@@ -56,7 +55,6 @@ namespace LinQuisine.Controllers
         }
 
         [HttpDelete]
-        [Consumes("application/json")]
         [Route("id")]
         public StatusReponse DeleteById()
         {
@@ -72,7 +70,6 @@ namespace LinQuisine.Controllers
         #region Name CRUD
 
         [HttpGet]
-        [Consumes("application/json")]
         [Route("name")]
         public Recipes GetByName()
         {
@@ -80,7 +77,6 @@ namespace LinQuisine.Controllers
         }
 
         [HttpPut]
-        [Consumes("application/json")]
         [Route("name")]
         public StatusReponse PutByName()
         {
@@ -92,7 +88,6 @@ namespace LinQuisine.Controllers
         }
 
         [HttpDelete]
-        [Consumes("application/json")]
         [Route("name")]
         public StatusReponse DeleteByName()
         {
