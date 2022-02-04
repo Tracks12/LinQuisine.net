@@ -47,13 +47,16 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { RecipeComponent } from './recipe/recipe.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     DashboardComponent,
-    RecipeComponent
+    RecipeComponent,
+    SearchBarComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ApiService } from '../api.service';
+import { Recipe } from '../recipe';
 
 @Component({
   selector: 'app-recipe',
@@ -19,12 +20,11 @@ export class RecipeComponent implements OnInit {
   ing: string[] = ['Patates', 'Poireaux', 'Tomates', 'Abricot', 'Ver de terre'];
   status: any;
   @Input()
-  num!: number;
+  recipe!: Recipe;
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.apiService.getStatus().subscribe((data) =>{
-      console.log(data);
       this.status = data['online'];
     })
   }

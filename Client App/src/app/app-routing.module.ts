@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'user', component: UserComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'search/:searchTerm', component: DashboardComponent}
 ];
 
 @NgModule({

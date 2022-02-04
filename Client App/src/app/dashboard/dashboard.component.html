@@ -1,18 +1,22 @@
 <mat-toolbar>
     <span class="titre">LINQUISINE</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <button mat-icon-button>
         <mat-icon routerLink="/user">person_outline</mat-icon>
     </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <button mat-icon-button>
+      <mat-icon>control_point</mat-icon>
+    </button>
+    <button mat-icon-button>
       <mat-icon>share</mat-icon>
     </button>
 </mat-toolbar>
 
  <div class="content">
+   <app-search-bar></app-search-bar>
   <div fxLayout="row wrap" fxLayoutGap=" 30px grid">
-    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let num of [1,2,3,4,5,6,7]">
-   <app-recipe [num]="num"></app-recipe>
+    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let recipe of foods">
+      <app-recipe [recipe]="recipe"></app-recipe>
     </div>
   </div>
 </div>
