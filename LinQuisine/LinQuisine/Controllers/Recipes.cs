@@ -1,6 +1,7 @@
 ﻿using LinQuisine.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,18 @@ namespace LinQuisine.Controllers
     [Route("api/[controller]")]
     public class Recipes : ControllerBase
     {
+        private List<Recipe> users = new()
+        {
+            new Recipe(id: 1, userId: 1, name: "Mousse express au Nutella", nbParts: 6, ingredients: new List<Ingredient>(), steps: new List<string>()),
+            new Recipe(id: 2, userId: 1, name: "Tarte au chèvre et saumon", nbParts: 6, ingredients: new List<Ingredient>(), steps: new List<string>())
+        };
+
+        private async Task<List<Recipe>> GetRecipes()
+        {
+            string _json = await System.IO.File.ReadAllTextAsync("users.json");
+            return JsonConvert.DeserializeObject<List<Recipe>>(_json);
+        }
+
         [HttpGet]
         public List<Recipe> Get()
         {

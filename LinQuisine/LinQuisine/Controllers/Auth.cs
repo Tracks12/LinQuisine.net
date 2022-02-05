@@ -20,7 +20,7 @@ namespace LinQuisine.Controllers
     [Route("api/[controller]")]
     public class Auth : ControllerBase
     {
-        private readonly List<User> users = new() {
+        private List<User> users = new() {
             new User(id: 0, username: "admin", mail: "admin@localhost", password: "admin", token: ""),
             new User(id: 1, username: "user", mail: "user@localhost", password: "pass", token: ""),
             new User(id: 2, username: "guest", mail: "guest@localhost", password: "guest", token: "")
