@@ -1,1 +1,4 @@
-﻿
+﻿id,user,email,pass
+1,admin,admin@localhost,admin
+2,anarchy,anarchy@localhost,password
+3,polo,polo@localhost,azerty

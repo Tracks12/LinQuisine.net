@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static LinQuisine.Models.Reponse;
 
 namespace LinQuisine.Controllers
 {
@@ -17,65 +16,53 @@ namespace LinQuisine.Controllers
     [Route("api/[controller]")]
     public class Recipes : ControllerBase
     {
-        private List<Recipe> users = new()
+        private List<Recipe> recipes = new()
         {
-            new Recipe(id: 1, userId: 1, name: "Mousse express au Nutella", nbParts: 6, ingredients: new List<Ingredient>(), steps: new List<string>()),
-            new Recipe(id: 2, userId: 1, name: "Tarte au chèvre et saumon", nbParts: 6, ingredients: new List<Ingredient>(), steps: new List<string>())
+            new Recipe(id: 1, userId: 1, name: "Mousse express au Nutella", nbParts: 6, ingredients: new List<Ingredient>() { new Ingredient { }, new Ingredient { } }, steps: new List<string>() { "", "" }),
+            new Recipe(id: 2, userId: 1, name: "Tarte au chèvre et saumon", nbParts: 2, ingredients: new List<Ingredient>() { new Ingredient { } }, steps: new List<string>() { "", "", "" }),
+            new Recipe(id: 3, userId: 1, name: "Poop pie", nbParts: 4, ingredients: new List<Ingredient>() { new Ingredient { } }, steps: new List<string>() { "Tous manger" }),
+            new Recipe(id: 4, userId: 2, name: "random recipe", nbParts: 8, ingredients: new List<Ingredient>() { new Ingredient { } }, steps: new List<string>() { "", "" })
         };
 
         private async Task<List<Recipe>> GetRecipes()
         {
-            string _json = await System.IO.File.ReadAllTextAsync("users.json");
+            string _json = await System.IO.File.ReadAllTextAsync("Database/recipes.json");
             return JsonConvert.DeserializeObject<List<Recipe>>(_json);
         }
 
         [HttpGet]
-        public List<Recipe> Get()
+        public IActionResult Get()
         {
-            return new List<Recipe> {
-
-            };
+            return Ok(value: recipes);
         }
 
         [HttpPost]
-        public StatusReponse Post()
+        public IActionResult Post()
         {
-            return new StatusReponse
-            {
-                success = true,
-                info = "item added"
-            };
+            return Ok(value: new Reponse { success = true, info = "item added" });
         }
 
         #region Id CRUD
 
         [HttpGet]
         [Route("id")]
-        public Recipe GetById()
+        public IActionResult GetById()
         {
-            return new Recipe { };
+            return Ok(value: recipes[1]);
         }
 
         [HttpPut]
         [Route("id")]
-        public StatusReponse PutById()
+        public IActionResult PutById()
         {
-            return new StatusReponse
-            {
-                success = true,
-                info = "x item(s) are updated"
-            };
+            return Ok(value: new Reponse { success = true, info = "x item(s) are updated" });
         }
 
         [HttpDelete]
         [Route("id")]
-        public StatusReponse DeleteById()
+        public IActionResult DeleteById()
         {
-            return new StatusReponse
-            {
-                success = true,
-                info = "x item(s) are deleted"
-            };
+            return Ok(value: new Reponse { success = true, info = "x item(s) are deleted" });
         }
 
         #endregion
@@ -84,31 +71,23 @@ namespace LinQuisine.Controllers
 
         [HttpGet]
         [Route("name")]
-        public Recipes GetByName()
+        public IActionResult GetByName()
         {
-            return new Recipes { };
+            return Ok(value: recipes[1]);
         }
 
         [HttpPut]
         [Route("name")]
-        public StatusReponse PutByName()
+        public IActionResult PutByName()
         {
-            return new StatusReponse
-            {
-                success = true,
-                info = "x item(s) are updated"
-            };
+            return Ok(value: new Reponse { success = true, info = "x item(s) are updated" });
         }
 
         [HttpDelete]
         [Route("name")]
-        public StatusReponse DeleteByName()
+        public IActionResult DeleteByName()
         {
-            return new StatusReponse
-            {
-                success = true,
-                info = "x item(s) are deleted"
-            };
+            return Ok(value: new Reponse { success = true, info = "x item(s) are deleted" });
         }
 
         #endregion

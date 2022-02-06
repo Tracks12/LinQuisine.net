@@ -40,6 +40,14 @@ namespace LinQuisine.Models
     {
         private int id1;
 
+        public Profile(int id, string username, string mail, string token)
+        {
+            this.id = id;
+            this.username = username;
+            this.mail = mail;
+            this.token = token;
+        }
+
         [Required(ErrorMessage = "Id is required")]
         public int id { get => id1; set => id1 = value; }
 
@@ -55,6 +63,13 @@ namespace LinQuisine.Models
 
     public class Register
     {
+        public Register(string username, string mail, string password)
+        {
+            this.username = username;
+            this.mail = mail;
+            this.password = password;
+        }
+
         [Required(ErrorMessage = "Username is required")]
         public string username { get; set; }
         
@@ -67,6 +82,12 @@ namespace LinQuisine.Models
 
     public class Login
     {
+        public Login(string username, string password)
+        {
+            this.username = username;
+            this.password = password;
+        }
+
         [Required(ErrorMessage = "Username is required")]
         public string username { get; set; }
         

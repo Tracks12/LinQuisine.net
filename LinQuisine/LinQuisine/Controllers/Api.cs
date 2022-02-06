@@ -17,10 +17,10 @@ namespace LinQuisine.Controllers
     {
         [HttpGet]
         [Route("status")]
-        public IActionResult Status() => Ok(new Status { online = true });
+        public IActionResult Status() => Ok(value: new Status(online: true));
 
         [HttpGet]
         [Route("version")]
-        public IActionResult Version() => Ok(new Models.Version { version = "0.1.0" });
+        public IActionResult Version() => Ok(value: new Models.Version(version: "0.1.0"));
     }
 }

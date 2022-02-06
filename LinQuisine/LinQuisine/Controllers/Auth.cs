@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static LinQuisine.Models.Reponse;
 
 namespace LinQuisine.Controllers
 {
@@ -28,7 +27,7 @@ namespace LinQuisine.Controllers
 
         private async Task<List<User>> GetUsers()
         {
-            string _json = await System.IO.File.ReadAllTextAsync("users.json");
+            string _json = await System.IO.File.ReadAllTextAsync("Database/users.json");
             return JsonConvert.DeserializeObject<List<User>>(_json);
         }
 
@@ -43,12 +42,12 @@ namespace LinQuisine.Controllers
                 foreach (User user in users)
                 {
                     if (body.username == user.username || body.mail == user.mail)
-                        return Unauthorized(value: new StatusReponse { success = false, error = "user already exist" });
+                        return Unauthorized(value: new Reponse { success = false, error = "user already exist" });
                 }
 
                 users.Add(new User(id: users.Count, username: body.username, mail: body.mail, password: body.password, token: ""));
 
-                return Ok(value: new StatusReponse { success = false, info = "user successfully registered" });
+                return Ok(value: new Reponse { success = false, info = "user successfully registered" });
             }
             
             catch(InvalidCastException)
@@ -71,11 +70,11 @@ namespace LinQuisine.Controllers
                 {
                     if(body.username == user.username && body.password == user.password)
                     {
-                        return Ok(new Profile { id = user.id, username = user.username, mail = user.mail, token = user.token });
+                        return Ok(value: new Profile(id: user.id, username: user.username, mail: user.mail, token: user.token));
                     }
                 }
 
-                return NotFound(new StatusReponse { success = false, error = "user not found" });
+                return NotFound(value: new Reponse { success = false, error = "user not found" });
             }
             
             catch(InvalidCastException)
@@ -99,7 +98,7 @@ namespace LinQuisine.Controllers
                 if (headers.ContainsKey("authorization"))
                 {
                     Console.WriteLine(headers["authorization"]);
-                    return Ok(new StatusReponse { success = true, info = "user successfully disconnected" });
+                    return Ok(value: new Reponse { success = true, info = "user successfully disconnected" });
                 }
 
                 else

@@ -9,13 +9,10 @@ namespace LinQuisine.Models
 {
     public class Reponse
     {
-        public class StatusReponse
-        {
-            [Required(ErrorMessage = "Success state is required")]
-            public bool success { get; set; }
+        [Required(ErrorMessage = "Success state is required")]
+        public bool success { get; set; }
 
-            public string info { get; set; }
-            public string error { get; set; }
-        }
+        public string info { get; set; }
+        public string error { get; set; }
     }
 }
