@@ -40,12 +40,11 @@ namespace LinQuisine.Models
     {
         private int id1;
 
-        public Profile(int id, string username, string mail, string token)
+        public Profile(int id, string username, string mail)
         {
             this.id = id;
             this.username = username;
             this.mail = mail;
-            this.token = token;
         }
 
         [Required(ErrorMessage = "Id is required")]
@@ -56,6 +55,18 @@ namespace LinQuisine.Models
 
         [Required(ErrorMessage = "Mail address is required")]
         public string mail { get; set; }
+    }
+
+    public class Connection
+    {
+        public Connection(Profile profile, string token)
+        {
+            this.profile = profile;
+            this.token = token;
+        }
+
+        [Required(ErrorMessage = "Profile is required")]
+        public Profile profile { get; set; }
 
         [Required(ErrorMessage = "Token is required")]
         public string token { get; set; }

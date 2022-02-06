@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,17 +27,17 @@ namespace LinQuisine.Controllers
 
         private async Task<List<Recipe>> GetRecipes()
         {
-            string _json = await System.IO.File.ReadAllTextAsync("Database/recipes.json");
+            string _json = await System.IO.File.ReadAllTextAsync($"{Directory.GetParent(Directory.GetCurrentDirectory())}/Database/recipes.json");
             return JsonConvert.DeserializeObject<List<Recipe>>(_json);
         }
 
-        [HttpGet]
+        [HttpGet("GetAllHeaders")]
         public IActionResult Get()
         {
             return Ok(value: recipes);
         }
 
-        [HttpPost]
+        [HttpPost("GetAllHeaders")]
         public IActionResult Post()
         {
             return Ok(value: new Reponse { success = true, info = "item added" });
@@ -44,21 +45,21 @@ namespace LinQuisine.Controllers
 
         #region Id CRUD
 
-        [HttpGet]
+        [HttpGet("GetAllHeaders")]
         [Route("id")]
         public IActionResult GetById()
         {
             return Ok(value: recipes[1]);
         }
 
-        [HttpPut]
+        [HttpPut("GetAllHeaders")]
         [Route("id")]
         public IActionResult PutById()
         {
             return Ok(value: new Reponse { success = true, info = "x item(s) are updated" });
         }
 
-        [HttpDelete]
+        [HttpDelete("GetAllHeaders")]
         [Route("id")]
         public IActionResult DeleteById()
         {
@@ -69,21 +70,21 @@ namespace LinQuisine.Controllers
 
         #region Name CRUD
 
-        [HttpGet]
+        [HttpGet("GetAllHeaders")]
         [Route("name")]
         public IActionResult GetByName()
         {
             return Ok(value: recipes[1]);
         }
 
-        [HttpPut]
+        [HttpPut("GetAllHeaders")]
         [Route("name")]
         public IActionResult PutByName()
         {
             return Ok(value: new Reponse { success = true, info = "x item(s) are updated" });
         }
 
-        [HttpDelete]
+        [HttpDelete("GetAllHeaders")]
         [Route("name")]
         public IActionResult DeleteByName()
         {

@@ -7,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace LinQuisine.Controllers
 
         private async Task<List<User>> GetUsers()
         {
-            string _json = await System.IO.File.ReadAllTextAsync("Database/users.json");
+            string _json = await System.IO.File.ReadAllTextAsync($"{Directory.GetParent(Directory.GetCurrentDirectory())}Database/users.json");
             return JsonConvert.DeserializeObject<List<User>>(_json);
         }
 
@@ -50,8 +51,9 @@ namespace LinQuisine.Controllers
                 return Ok(value: new Reponse { success = false, info = "user successfully registered" });
             }
             
-            catch(InvalidCastException)
+            catch(InvalidCastException e)
             {
+                Console.WriteLine(value: e);
                 return BadRequest();
             }
         }
@@ -62,23 +64,34 @@ namespace LinQuisine.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login([FromBody] Login body)
+        public IActionResult Login([FromBody] Login body)
         {
             try
             {
-                foreach (User user in users)
+                IEnumerable<IGrouping<int, User>> req = from user in users
+                                                        where user.username.Contains(body.username)
+                                                        where user.password.Contains(body.password)
+                                                        group user by user.id;
+
+                foreach (var item in req)
                 {
-                    if(body.username == user.username && body.password == user.password)
+                    foreach (User user in users)
                     {
-                        return Ok(value: new Profile(id: user.id, username: user.username, mail: user.mail, token: user.token));
+                        Profile profile = new Profile(id: user.id, username: user.username, mail: user.mail);
+                        string token = Convert.ToBase64String(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(profile)));
+
+                        user.token = token;
+
+                        return Ok(value: new Connection(profile: profile, token: token));
                     }
                 }
 
                 return NotFound(value: new Reponse { success = false, error = "user not found" });
             }
-            
-            catch(InvalidCastException)
+
+            catch (InvalidCastException e)
             {
+                Console.WriteLine(value: e);
                 return BadRequest();
             }
         }
@@ -89,7 +102,7 @@ namespace LinQuisine.Controllers
 
         [HttpPost("GetAllHeaders")]
         [Route("logout")]
-        public async Task<IActionResult> Logout()
+        public IActionResult Logout()
         {
             try
             {
@@ -97,7 +110,17 @@ namespace LinQuisine.Controllers
 
                 if (headers.ContainsKey("authorization"))
                 {
-                    Console.WriteLine(headers["authorization"]);
+                    string token = headers["authorization"];
+                    Profile profile = JsonConvert.DeserializeObject<Profile>(Encoding.UTF8.GetString(Convert.FromBase64String(token)));
+
+                    IEnumerable<IGrouping<int, User>> req = from user in users
+                                                            where user.id.Equals(profile.id)
+                                                            group user by user.id;
+
+                    foreach (var item in req)
+                        foreach (User user in item)
+                            user.token = "";
+
                     return Ok(value: new Reponse { success = true, info = "user successfully disconnected" });
                 }
 
@@ -107,8 +130,9 @@ namespace LinQuisine.Controllers
                 }
             }
 
-            catch(InvalidCastException)
+            catch(InvalidCastException e)
             {
+                Console.WriteLine(value: e);
                 return BadRequest();
             }
         }
