@@ -1,1 +1,123 @@
-[{"id":1,"userId":1644178177,"name":"Mousse express au Nutella","nbParts":6,"ingredients":[{"name":"Mascarpone","quantity":200,"unit":"g"},{"name":"Oeufs","quantity":2,"unit":null},{"name":"Nutella","quantity":5,"unit":"cuillères à soupe"},{"name":"Sucre","quantity":60,"unit":"g"}],"steps":["Séparez les blancs et les jaunes d'oeufs. Battez les jaunes avec le sucre et ajoutez le mascarpone puis le Nutella.","Montez les blancs en neige. Incorporez-les progressivement à la première préparation à l'aide d'une spatule.","Versez la mousse dans des verrines et réservez au frais pendant au moins 3 heures. Servez bien froid."]},{"id":2,"userId":1644178177,"name":"Tarte au chèvre et saumon","nbParts":4,"ingredients":[{"name":"Saumon frais","quantity":250,"unit":"g"},{"name":"Oeufs","quantity":5,"unit":null},{"name":"Pâte feuilletée","quantity":1,"unit":"rouleau"},{"name":"Chèvre","quantity":1,"unit":"bûche"},{"name":"Crème fraîche épaisse","quantity":20,"unit":"cL"}],"steps":["Préchauffez le four à 180°. Etalez la pâte feuilletée dans un moule à tarte.","Dans un grand récipient, écrasez le chèvre à l'aide d'une fourchette. Incorporez progressivement les oeufs.","Découpez le saumon en dés. Ciselez l'aneth. Ajoutez à la préparation la crème, les dés de saumon, l'aneth, le sel et le poivre. Mélangez le tout.","Versez la préparation sur la pâte feuilletée. Enfournez durant 40 minutes. Servez chaud ou tiède."]},{"id":1644187310,"userId":1644178167,"name":"black forest","nbParts":12,"ingredients":[{"name":"eggs","quantity":6,"unit":null},{"name":"sugar","quantity":150,"unit":"g"},{"name":"farin","quantity":55,"unit":"g"},{"name":"corn husk","quantity":55,"unit":"g"},{"name":"cacao amer","quantity":3,"unit":null},{"name":"bag of vanilla sugar","quantity":1,"unit":null},{"name":"liquid cream full","quantity":65,"unit":"cl"}],"steps":["Préchauffer le four à 165°C. Dans un saladier, battre les jaunes d'oeufs, le sucre en poudre et le sucre vanillé jusqu'à ce que la préparation fasse un ruban. Tout en continuant de battre, ajouter peu à peu la farine, la maïzena et le cacao en poudre. Dans un autre saladier, monter les blancs en neige très ferme avec un batteur électrique puis les incorporer petit à petit et très délicatement à la pâte. Verser dans un moule à manqué beurré (en silicone pour moi), mettre et four et laisser cuire environ 30 mn. A la sortie du four, laisser le biscuit 5 à 10 mn dans son moule puis le démouler et le laisser refroidir sur une grille.","Dans un grand saladier, fouetter la crème liquide. Lorsque la crème commence à être ferme, verser doucement le sucre glace.","Verser le jus des cerises dans un bol et laisser les cerises s'égoutter. Lorsque le gâteau est froid, le couper en 2 puis mouiller les 2 parties intérieures du biscuit avec le jus des cerises. Poser la partie inférieure du gâteau sur un plat de service puis étaler une partie de la chantilly, disposer les cerises puis poser dessus la partie supérieure du gâteau. Etaler le reste de chantilly sur les côtés et sur la surface du gâteau.","Décorer votre forêt noire avec des copeaux de chocolat sur les bords et le dessus. Ajouter de la chantilly et des cerises. Servez."]}]
+[
+  {
+    "id": 1,
+    "userId": 1644178167,
+    "name": "Mousse express au Nutella",
+    "nbParts": 6,
+    "ingredients": [
+      {
+        "name": "Mascarpone",
+        "quantity": 200,
+        "unit": "g"
+      },
+      {
+        "name": "Oeufs",
+        "quantity": 2,
+        "unit": null
+      },
+      {
+        "name": "Nutella",
+        "quantity": 5,
+        "unit": "cuillères à soupe"
+      },
+      {
+        "name": "Sucre",
+        "quantity": 60,
+        "unit": "g"
+      }
+    ],
+    "steps": [
+      "Séparez les blancs et les jaunes d'oeufs. Battez les jaunes avec le sucre et ajoutez le mascarpone puis le Nutella.",
+      "Montez les blancs en neige. Incorporez-les progressivement à la première préparation à l'aide d'une spatule.",
+      "Versez la mousse dans des verrines et réservez au frais pendant au moins 3 heures. Servez bien froid."
+    ]
+  },
+  {
+    "id": 2,
+    "userId": 1644178167,
+    "name": "Tarte au chèvre et saumon",
+    "nbParts": 4,
+    "ingredients": [
+      {
+        "name": "Saumon frais",
+        "quantity": 250,
+        "unit": "g"
+      },
+      {
+        "name": "Oeufs",
+        "quantity": 5,
+        "unit": null
+      },
+      {
+        "name": "Pâte feuilletée",
+        "quantity": 1,
+        "unit": "rouleau"
+      },
+      {
+        "name": "Chèvre",
+        "quantity": 1,
+        "unit": "bûche"
+      },
+      {
+        "name": "Crème fraîche épaisse",
+        "quantity": 20,
+        "unit": "cL"
+      }
+    ],
+    "steps": [
+      "Préchauffez le four à 180°. Etalez la pâte feuilletée dans un moule à tarte.",
+      "Dans un grand récipient, écrasez le chèvre à l'aide d'une fourchette. Incorporez progressivement les oeufs.",
+      "Découpez le saumon en dés. Ciselez l'aneth. Ajoutez à la préparation la crème, les dés de saumon, l'aneth, le sel et le poivre. Mélangez le tout.",
+      "Versez la préparation sur la pâte feuilletée. Enfournez durant 40 minutes. Servez chaud ou tiède."
+    ]
+  },
+  {
+    "id": 1644187310,
+    "userId": 1644178167,
+    "name": "black forest",
+    "nbParts": 12,
+    "ingredients": [
+      {
+        "name": "eggs",
+        "quantity": 6,
+        "unit": null
+      },
+      {
+        "name": "sugar",
+        "quantity": 150,
+        "unit": "g"
+      },
+      {
+        "name": "farin",
+        "quantity": 55,
+        "unit": "g"
+      },
+      {
+        "name": "corn husk",
+        "quantity": 55,
+        "unit": "g"
+      },
+      {
+        "name": "cacao amer",
+        "quantity": 3,
+        "unit": null
+      },
+      {
+        "name": "bag of vanilla sugar",
+        "quantity": 1,
+        "unit": null
+      },
+      {
+        "name": "liquid cream full",
+        "quantity": 65,
+        "unit": "cl"
+      }
+    ],
+    "steps": [
+      "Préchauffer le four à 165°C. Dans un saladier, battre les jaunes d'oeufs, le sucre en poudre et le sucre vanillé jusqu'à ce que la préparation fasse un ruban. Tout en continuant de battre, ajouter peu à peu la farine, la maïzena et le cacao en poudre. Dans un autre saladier, monter les blancs en neige très ferme avec un batteur électrique puis les incorporer petit à petit et très délicatement à la pâte. Verser dans un moule à manqué beurré (en silicone pour moi), mettre et four et laisser cuire environ 30 mn. A la sortie du four, laisser le biscuit 5 à 10 mn dans son moule puis le démouler et le laisser refroidir sur une grille.",
+      "Dans un grand saladier, fouetter la crème liquide. Lorsque la crème commence à être ferme, verser doucement le sucre glace.",
+      "Verser le jus des cerises dans un bol et laisser les cerises s'égoutter. Lorsque le gâteau est froid, le couper en 2 puis mouiller les 2 parties intérieures du biscuit avec le jus des cerises. Poser la partie inférieure du gâteau sur un plat de service puis étaler une partie de la chantilly, disposer les cerises puis poser dessus la partie supérieure du gâteau. Etaler le reste de chantilly sur les côtés et sur la surface du gâteau.",
+      "Décorer votre forêt noire avec des copeaux de chocolat sur les bords et le dessus. Ajouter de la chantilly et des cerises. Servez."
+    ]
+  }
+]
