@@ -28,8 +28,9 @@ namespace LinQuisine
                 options.AddPolicy(name: "AllowAll",
                     builder => {
                         builder
-                            .WithOrigins("*")
-                            .WithMethods("GET", "POST", "PUT", "DELETE");
+                            .AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader();
                     });
             });
 
@@ -45,7 +46,7 @@ namespace LinQuisine
             }
 
             app.UseRouting();
-            app.UseCors();
+            app.UseCors("AllowAll");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

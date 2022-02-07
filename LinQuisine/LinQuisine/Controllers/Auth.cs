@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 namespace LinQuisine.Controllers
 {
     [ApiController]
-    [EnableCors("AllowAll")]
+    [EnableCors]
     [Consumes("application/json")]
     [Route("api/[controller]")]
     public class Auth : ControllerBase
