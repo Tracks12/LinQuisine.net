@@ -18,7 +18,7 @@
 									"pm.test(\"Authentification Token getter is ok\", () => {\r",
 									"\tlet res = pm.response.json();\r",
 									"\r",
-									"\tpm.collectionVariables.set(\"USER_ID\", res.id);\r",
+									"\tpm.collectionVariables.set(\"USER_ID\", res.profile.id);\r",
 									"\tpm.collectionVariables.set(\"USER_TOKEN\", res.token);\r",
 									"});"
 								],
@@ -161,12 +161,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/recipes",
+							"raw": "{{BASE_URL}}/recipes/",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"recipes"
+								"recipes",
+								""
 							]
 						}
 					},
@@ -193,7 +194,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"name\": \"{{RECIPE_NAME}}\",\r\n\t\"nbParts\": 7,\r\n\t\"ingredients\": [],\r\n\t\"steps\": []\r\n}",
+							"raw": "{\r\n\t\"name\": \"black forest\",\r\n\t\"nbParts\": 12,\r\n\t\"ingredients\": [\r\n\t\t{\r\n\t\t\t\"name\": \"eggs\",\r\n\t\t\t\"quantity\": \"6\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"sugar\",\r\n\t\t\t\"quantity\": \"150\",\r\n\t\t\t\"unit\": \"g\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"farin\",\r\n\t\t\t\"quantity\": \"55\",\r\n\t\t\t\"unit\": \"g\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"corn husk\",\r\n\t\t\t\"quantity\": \"55\",\r\n\t\t\t\"unit\": \"g\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"cacao amer\",\r\n\t\t\t\"quantity\": \"3\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"bag of vanilla sugar\",\r\n\t\t\t\"quantity\": \"1\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"liquid cream full\",\r\n\t\t\t\"quantity\": \"65\",\r\n\t\t\t\"unit\": \"cl\"\r\n\t\t}\r\n\t],\r\n\t\"steps\": [\r\n\t\t\"Préchauffer le four à 165°C. Dans un saladier, battre les jaunes d'oeufs, le sucre en poudre et le sucre vanillé jusqu'à ce que la préparation fasse un ruban. Tout en continuant de battre, ajouter peu à peu la farine, la maïzena et le cacao en poudre. Dans un autre saladier, monter les blancs en neige très ferme avec un batteur électrique puis les incorporer petit à petit et très délicatement à la pâte. Verser dans un moule à manqué beurré (en silicone pour moi), mettre et four et laisser cuire environ 30 mn. A la sortie du four, laisser le biscuit 5 à 10 mn dans son moule puis le démouler et le laisser refroidir sur une grille.\",\r\n\t\t\"Dans un grand saladier, fouetter la crème liquide. Lorsque la crème commence à être ferme, verser doucement le sucre glace.\",\r\n\t\t\"Verser le jus des cerises dans un bol et laisser les cerises s'égoutter. Lorsque le gâteau est froid, le couper en 2 puis mouiller les 2 parties intérieures du biscuit avec le jus des cerises. Poser la partie inférieure du gâteau sur un plat de service puis étaler une partie de la chantilly, disposer les cerises puis poser dessus la partie supérieure du gâteau. Etaler le reste de chantilly sur les côtés et sur la surface du gâteau.\",\r\n\t\t\"Décorer votre forêt noire avec des copeaux de chocolat sur les bords et le dessus. Ajouter de la chantilly et des cerises. Servez.\"\r\n\t]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -201,12 +202,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/recipes",
+							"raw": "{{BASE_URL}}/recipes/",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"recipes"
+								"recipes",
+								""
 							]
 						}
 					},
@@ -266,7 +268,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"name\": \"Tarte à la courgette\",\r\n\t\"ingredients\": []\r\n}",
+							"raw": "{\r\n\t\"name\": \"black forest\",\r\n\t\"nbParts\": 12,\r\n\t\"ingredients\": [\r\n\t\t{\r\n\t\t\t\"name\": \"eggs\",\r\n\t\t\t\"quantity\": \"6\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"sugar\",\r\n\t\t\t\"quantity\": \"150\",\r\n\t\t\t\"unit\": \"g\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"farin\",\r\n\t\t\t\"quantity\": \"55\",\r\n\t\t\t\"unit\": \"g\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"corn husk\",\r\n\t\t\t\"quantity\": \"55\",\r\n\t\t\t\"unit\": \"g\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"cacao amer\",\r\n\t\t\t\"quantity\": \"3\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"bag of vanilla sugar\",\r\n\t\t\t\"quantity\": \"1\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"liquid cream full\",\r\n\t\t\t\"quantity\": \"65\",\r\n\t\t\t\"unit\": \"cl\"\r\n\t\t}\r\n\t],\r\n\t\"steps\": [\r\n\t\t\"Préchauffer le four à 165°C. Dans un saladier, battre les jaunes d'oeufs, le sucre en poudre et le sucre vanillé jusqu'à ce que la préparation fasse un ruban. Tout en continuant de battre, ajouter peu à peu la farine, la maïzena et le cacao en poudre. Dans un autre saladier, monter les blancs en neige très ferme avec un batteur électrique puis les incorporer petit à petit et très délicatement à la pâte. Verser dans un moule à manqué beurré (en silicone pour moi), mettre et four et laisser cuire environ 30 mn. A la sortie du four, laisser le biscuit 5 à 10 mn dans son moule puis le démouler et le laisser refroidir sur une grille.\",\r\n\t\t\"Dans un grand saladier, fouetter la crème liquide. Lorsque la crème commence à être ferme, verser doucement le sucre glace.\",\r\n\t\t\"Verser le jus des cerises dans un bol et laisser les cerises s'égoutter. Lorsque le gâteau est froid, le couper en 2 puis mouiller les 2 parties intérieures du biscuit avec le jus des cerises. Poser la partie inférieure du gâteau sur un plat de service puis étaler une partie de la chantilly, disposer les cerises puis poser dessus la partie supérieure du gâteau. Etaler le reste de chantilly sur les côtés et sur la surface du gâteau.\",\r\n\t\t\"Décorer votre forêt noire avec des copeaux de chocolat sur les bords et le dessus. Ajouter de la chantilly et des cerises. Servez.\"\r\n\t]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -374,7 +376,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"name\": \"Tarte à la courgette\",\r\n\t\"ingredients\": []\r\n}",
+							"raw": "{\r\n\t\"name\": \"black\",\r\n\t\"nbParts\": 12,\r\n\t\"ingredients\": [\r\n\t\t{\r\n\t\t\t\"name\": \"eggs\",\r\n\t\t\t\"quantity\": \"6\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"sugar\",\r\n\t\t\t\"quantity\": \"150\",\r\n\t\t\t\"unit\": \"g\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"farin\",\r\n\t\t\t\"quantity\": \"55\",\r\n\t\t\t\"unit\": \"g\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"corn husk\",\r\n\t\t\t\"quantity\": \"55\",\r\n\t\t\t\"unit\": \"g\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"cacao amer\",\r\n\t\t\t\"quantity\": \"3\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"bag of vanilla sugar\",\r\n\t\t\t\"quantity\": \"1\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"name\": \"liquid cream full\",\r\n\t\t\t\"quantity\": \"65\",\r\n\t\t\t\"unit\": \"cl\"\r\n\t\t}\r\n\t],\r\n\t\"steps\": [\r\n\t\t\"Préchauffer le four à 165°C. Dans un saladier, battre les jaunes d'oeufs, le sucre en poudre et le sucre vanillé jusqu'à ce que la préparation fasse un ruban. Tout en continuant de battre, ajouter peu à peu la farine, la maïzena et le cacao en poudre. Dans un autre saladier, monter les blancs en neige très ferme avec un batteur électrique puis les incorporer petit à petit et très délicatement à la pâte. Verser dans un moule à manqué beurré (en silicone pour moi), mettre et four et laisser cuire environ 30 mn. A la sortie du four, laisser le biscuit 5 à 10 mn dans son moule puis le démouler et le laisser refroidir sur une grille.\",\r\n\t\t\"Dans un grand saladier, fouetter la crème liquide. Lorsque la crème commence à être ferme, verser doucement le sucre glace.\",\r\n\t\t\"Verser le jus des cerises dans un bol et laisser les cerises s'égoutter. Lorsque le gâteau est froid, le couper en 2 puis mouiller les 2 parties intérieures du biscuit avec le jus des cerises. Poser la partie inférieure du gâteau sur un plat de service puis étaler une partie de la chantilly, disposer les cerises puis poser dessus la partie supérieure du gâteau. Etaler le reste de chantilly sur les côtés et sur la surface du gâteau.\",\r\n\t\t\"Décorer votre forêt noire avec des copeaux de chocolat sur les bords et le dessus. Ajouter de la chantilly et des cerises. Servez.\"\r\n\t]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -423,6 +425,24 @@
 								"recipes",
 								"name",
 								"{{RECIPE_NAME}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Convert To CSV",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/recipes/csv",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"recipes",
+								"csv"
 							]
 						}
 					},

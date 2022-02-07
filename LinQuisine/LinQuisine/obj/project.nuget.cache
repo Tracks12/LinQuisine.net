@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "gEjcz9e12AVkyoPJRWz3jJ0qN5Goeiyw8iaDBzykNa6J7g0MWQN+V9iUiTTNUvDmKJ7OBckBqPF2iWMq5+E+oA==",
+  "dgSpecHash": "5naI2OSNQNxCEvmTLyjlEA2Py3i9afvLIDrLCIW+NiHCthFC/mf8k6rUpDYWmxgTXynFtAia5QhuklKFhgdSiw==",
   "success": true,
   "projectFilePath": "D:\\src\\LinQuisine.net\\LinQuisine\\LinQuisine\\LinQuisine.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Anarchy\\.nuget\\packages\\csvhelper\\27.2.1\\csvhelper.27.2.1.nupkg.sha512",
     "C:\\Users\\Anarchy\\.nuget\\packages\\microsoft.aspnet.razor\\3.2.7\\microsoft.aspnet.razor.3.2.7.nupkg.sha512",
     "C:\\Users\\Anarchy\\.nuget\\packages\\microsoft.aspnet.webpages\\3.2.7\\microsoft.aspnet.webpages.3.2.7.nupkg.sha512",
     "C:\\Users\\Anarchy\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

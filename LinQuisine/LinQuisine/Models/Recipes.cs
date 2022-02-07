@@ -32,18 +32,17 @@ namespace LinQuisine.Models
             this.steps = steps;
         }
 
-        [Required(ErrorMessage = "Recipe id is required")]
         public int id { get => id1; set => id1 = value; }
+
+        public int userId { get; set; }
 
         [Required(ErrorMessage = "Recipe name is required")]
         public string name { get; set; }
 
         [Required(ErrorMessage = "Parts number is required")]
         public int nbParts { get; set; }
+
         public List<Ingredient> ingredients { get; set; }
         public List<string> steps { get; set; }
-
-        [Required(ErrorMessage = "User id is required")]
-        public int userId { get; set; }
     }
 }

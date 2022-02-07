@@ -20,17 +20,35 @@ namespace LinQuisine.Controllers
     [Route("api/[controller]")]
     public class Auth : ControllerBase
     {
-        private List<User> users = new() {
-            new User(id: 0, username: "admin", mail: "admin@localhost", password: "admin", token: ""),
-            new User(id: 1, username: "user", mail: "user@localhost", password: "pass", token: ""),
-            new User(id: 2, username: "guest", mail: "guest@localhost", password: "guest", token: "")
-        };
+        private List<User> users;
+
+        public Auth() {}
+
+        #region Data Manager
 
         private async Task<List<User>> GetUsers()
         {
-            string _json = await System.IO.File.ReadAllTextAsync($"{Directory.GetParent(Directory.GetCurrentDirectory())}Database/users.json");
+            string _json = await System.IO.File.ReadAllTextAsync(path: $"{Directory.GetCurrentDirectory()}/Database/users.json");
             return JsonConvert.DeserializeObject<List<User>>(_json);
         }
+
+        private async Task<bool> UpdateUsers()
+        {
+            try
+            {
+                string _json = JsonConvert.SerializeObject(value: users);
+                await System.IO.File.WriteAllTextAsync(path: $"{Directory.GetCurrentDirectory()}/Database/users.json", contents: _json);
+                return true;
+            }
+
+            catch (InvalidCastException e)
+            {
+                Console.WriteLine(value: e);
+                return false;
+            }
+        }
+
+        #endregion
 
         #region Register
 
@@ -40,18 +58,27 @@ namespace LinQuisine.Controllers
         {
             try
             {
-                foreach (User user in users)
-                {
-                    if (body.username == user.username || body.mail == user.mail)
-                        return Unauthorized(value: new Reponse { success = false, error = "user already exist" });
-                }
+                users = await GetUsers();
 
-                users.Add(new User(id: users.Count, username: body.username, mail: body.mail, password: body.password, token: ""));
+                IEnumerable<IGrouping<int, User>> req = from user in users
+                                                        orderby user.id ascending
+                                                        group user by user.id;
 
-                return Ok(value: new Reponse { success = false, info = "user successfully registered" });
+                foreach (var item in req)
+                    foreach (User user in item)
+                        if (body.username == user.username || body.mail == user.mail)
+                            return Unauthorized(value: new Reponse { success = false, error = "user already exist" });
+
+                DateTime foo = DateTime.Now;
+
+                users.Add(new User(id: (int)((DateTimeOffset)foo).ToUnixTimeSeconds(), username: body.username, mail: body.mail, password: body.password, token: null));
+
+                await UpdateUsers();
+
+                return Ok(value: new Reponse { success = true, info = "user successfully registered" });
             }
             
-            catch(InvalidCastException e)
+            catch (InvalidCastException e)
             {
                 Console.WriteLine(value: e);
                 return BadRequest();
@@ -64,10 +91,12 @@ namespace LinQuisine.Controllers
 
         [HttpPost]
         [Route("login")]
-        public IActionResult Login([FromBody] Login body)
+        public async Task<IActionResult> Login([FromBody] Login body)
         {
             try
             {
+                users = await GetUsers();
+
                 IEnumerable<IGrouping<int, User>> req = from user in users
                                                         where user.username.Contains(body.username)
                                                         where user.password.Contains(body.password)
@@ -75,12 +104,14 @@ namespace LinQuisine.Controllers
 
                 foreach (var item in req)
                 {
-                    foreach (User user in users)
+                    foreach (User user in item)
                     {
                         Profile profile = new Profile(id: user.id, username: user.username, mail: user.mail);
                         string token = Convert.ToBase64String(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(profile)));
 
                         user.token = token;
+
+                        await UpdateUsers();
 
                         return Ok(value: new Connection(profile: profile, token: token));
                     }
@@ -100,12 +131,14 @@ namespace LinQuisine.Controllers
 
         #region Logout
 
-        [HttpPost("GetAllHeaders")]
+        [HttpPost]
         [Route("logout")]
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
             try
             {
+                users = await GetUsers();
+
                 var headers = Request.Headers;
 
                 if (headers.ContainsKey("authorization"))
@@ -119,7 +152,9 @@ namespace LinQuisine.Controllers
 
                     foreach (var item in req)
                         foreach (User user in item)
-                            user.token = "";
+                            user.token = null;
+
+                    await UpdateUsers();
 
                     return Ok(value: new Reponse { success = true, info = "user successfully disconnected" });
                 }
@@ -130,7 +165,7 @@ namespace LinQuisine.Controllers
                 }
             }
 
-            catch(InvalidCastException e)
+            catch (InvalidCastException e)
             {
                 Console.WriteLine(value: e);
                 return BadRequest();
