@@ -24,7 +24,8 @@ export class DashboardComponent implements OnInit {
 	ngOnInit(): void {
 		this.apiService.getAllRecipes().subscribe(r => {
 			//mettre r après le =
-			this.foods = [];
+			console.log(r);
+			this.foods = r;
 		});
 
 		this.route.params.subscribe(params => {

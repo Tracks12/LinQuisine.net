@@ -91,10 +91,13 @@ namespace LinQuisine.Controllers
                                                           orderby recipe.id ascending
                                                           group recipe by recipe.id;
 
-                foreach(var item in req)
-                    return Ok(value: item);
+                List<Recipe> list = new();
 
-                return Ok(value: req);
+                foreach (var item in req)
+                    foreach (Recipe recipe in item)
+                        list.Add(recipe);
+
+                return Ok(value: list);
             }
 
             catch (InvalidCastException e)
@@ -108,7 +111,7 @@ namespace LinQuisine.Controllers
         [Route("csv")]
         public async Task<IActionResult> ExportToCsv()
         {
-            await ExportToCsv();
+            await UpdateRecipesToCsv();
 
             return Ok(value: new Reponse { success = true, info = "data successfully converted" });
         }

@@ -25,7 +25,7 @@ export class SearchBarComponent implements OnInit {
 		})
 	}
 
-	search():void{
+	search(): void{
 		if(this.searchTerm)
 			this.router.navigateByUrl('/search/' + this.searchTerm);
 	}
